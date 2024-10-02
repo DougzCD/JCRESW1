@@ -40,7 +40,7 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 ### Diagramas
 
 #### Diagrama de Caso de Uso
-![image](./documents/diagrams/Diagrama%20de%20caso%20de%20uso.drawio.png)
+![image](./documentos/diagramas/Diagrama_Casos_de_Uso.drawio.png)
 
 #### Diagrama de Classes
 ![image](./documents/diagrams/Diagrama%20de%20classe%20Estagio.drawio.png)
