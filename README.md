@@ -56,4 +56,4 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 ![image](./documentos/diagramas/Diagrama%20de%20classe%20Estagio.drawio.png)
 
 #### Mapa de Navegação
-![image](./documentos/diagramas/Mapa%20de%20Navegacao.drawio.png)
+![image](./documentos/diagramas/Map.drawio.png)
