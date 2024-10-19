@@ -57,3 +57,5 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 
 #### Mapa de Navegação
 ![image](./documentos/diagramas/Map.drawio.png)
+
+#### Modelo Conceitual
