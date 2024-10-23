@@ -18,8 +18,11 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 
 ## Reuniões
 1º - 21/09/2024
+
 2º - 05/10/2024
+
 3º - 19/10/2024
+
 4º -
 
 ## Documentação
@@ -40,7 +43,7 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
   - Alta: Requisitos essenciais para o funcionamento básico do sistema ou que agregam alto valor ao usuário.
   - Média: Requisitos importantes, mas que podem ser implementados em fases posteriores ou têm menor impacto imediato.
 
-### Diagramas
+### Casos de Uso
 
 #### Diagrama de Caso de Uso
 ![image](./documentos/diagramas/Diagrama%20de%20caso%20de%20uso.drawio.png)
@@ -62,8 +65,10 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilitando a compreensão das interações entre os atores e o sistema.
 
 
-#### Diagrama de Classes
-![image](./documentos/diagramas/Diagrama%20de%20classe%20Estagio.drawio.png)
+#### Diagrama de Sequencia
+
+##### C1.1 - CRUD dos Insumos
+![image](./documentos/diagramas/Diagrama_Sequencia_1.drawio.png)
 
 #### Mapa de Navegação
 ![image](./documentos/diagramas/Map.drawio.png)
