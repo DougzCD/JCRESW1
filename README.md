@@ -57,7 +57,8 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 | C2     | Cardápio Digital             | Su-Chefe, Garçom      | Chefe gerencia itens do cardápio; garçom acessa o cardápio digital para registrar os pedidos dos clientes.                | 1. Chefe acessa o cardápio e edita itens.<br>2. Garçom acessa o cardápio digital durante o atendimento.<br>3. Garçom registra o pedido com base nas opções do cardápio.                                                                       |
 | C3     | Chamar Garçom                | Cliente (indireto), Garçom | Clientes chamam o garçom via um botão, e o sistema notifica o garçom mais próximo.                                       | 1. Cliente aperta o botão "Chamar Garçom".<br>2. Sistema notifica o garçom mais próximo.<br>3. Garçom recebe a notificação e atende à mesa correspondente.|
 | C4     | Comanda Digital              | Garçom             | Cria, divide e aloca pedidos nas comandas de cada mesa. Chefe acompanha o status das comandas em tempo real.              | 1. Garçom seleciona a mesa e cria uma comanda digital.<br>2. Registra os pedidos na comanda.<br>3. Garçom divide a comanda, se necessário.<br>4. Sistema associa pedidos às comandas.<br>5. Chefe visualiza status das comandas.             |
-| C5     | Emissão de Vendas e Estoque | Chefe          | Gera relatórios sobre vendas e níveis de estoque dos insumos.                                                            | 1. Chefe acessa interface de relatórios.<br>2. Seleciona o tipo de relatório (vendas, estoque).<br>3. Sistema gera o relatório com base nos dados e apresenta ao chefe.                                                                      |
+| C5     | Realizar Pagamento             | Garçom             | Após fechar a comanda, o gaçom pode iniciar o processo de pagamento.              | 1. Garçom seleciona a comanda a ser fechada.<br>2. O garçom pergunta pro cliente qual forma de pagamento.<br>3. Garçom seleciona a forma de pagamento desejada.<br>4. Sistema aguarda a confirmaçam do pagamento.<br>5. Pagamento é concluido             |
+| C6     | Emissão de Vendas e Estoque | Chefe          | Gera relatórios sobre vendas e níveis de estoque dos insumos.                                                            | 1. Chefe acessa interface de relatórios.<br>2. Seleciona o tipo de relatório (vendas, estoque).<br>3. Sistema gera o relatório com base nos dados e apresenta ao chefe.                                                                      |
 
 ---
 
@@ -78,8 +79,11 @@ Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilit
 ##### C4 - Comanda Digital
 ![image](./documentos/diagramas/Diagrama_Sequencia_4.drawio.png)
 
-##### C5 - Emissão de Vendas e Estoque
+##### C5 - Realizar Pagamento
 ![image](./documentos/diagramas/Diagrama_Sequencia_5.drawio.png)
+
+##### C6 - Emissão de Vendas e Estoque
+![image](./documentos/diagramas/Diagrama_Sequencia_6.drawio.png)
 
 #### Mapa de Navegação
 ![image](./documentos/diagramas/Map.drawio.png)
