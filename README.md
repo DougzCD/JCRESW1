@@ -70,6 +70,9 @@ Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilit
 ##### C1.1 - CRUD dos Insumos
 ![image](./documentos/diagramas/Diagrama_Sequencia_1.drawio.png)
 
+##### C2 - CRUD dos Insumos
+![image](./documentos/diagramas/Diagrama_Sequencia_2.drawio.png)
+
 #### Mapa de Navegação
 ![image](./documentos/diagramas/Map.drawio.png)
 
