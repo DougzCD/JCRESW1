@@ -18,6 +18,9 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 
 ## Reuniões
 1º - 21/09/2024
+2º - 05/10/2024
+3º - 19/10/2024
+4º -
 
 ## Documentação
 
@@ -58,13 +61,6 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 
 Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilitando a compreensão das interações entre os atores e o sistema.
 
-| ID |  Caso de Uso   |   Resumo  |
-|----|--------------|-----------------------------------------------|
-| C1 |  GERENCIAR OS INSUMOS    |   Deve existir um banco de dados onde são catalogados os insumos. |
-| C1.1 | CRUD DOS INSUMOS    |  Usuarios devem poder adicionar, ver, atualizar e remover insumos dos bancos de dados.   |
-| C2 |  CARDAPIO DIGITAL   |    Um cardapio  digital que mostra todas as opições de compra com preço e descrição.    |
-| C3 |  COMANDA DIGITAL    |    Pode gerar e dividir comandas e alocar os pedidos para diferentes comandas.  |
-| C4 |  CHAMAR GARÇOM    |  Botao que imediatamente notifica o garcom mais proximo. |
 
 #### Diagrama de Classes
 ![image](./documentos/diagramas/Diagrama%20de%20classe%20Estagio.drawio.png)
@@ -73,3 +69,4 @@ Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilit
 ![image](./documentos/diagramas/Map.drawio.png)
 
 #### Modelo Conceitual
+![image](./documentos/diagramas/Modelo_Conceitual.drawio.png)
