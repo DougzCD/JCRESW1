@@ -33,7 +33,7 @@ Um sistema de manejamento do estoque, cardapio, pedidos e atendimento de um Bote
 |----|--------------|-----------------------------------------------|----------------------------|-----------------|
 | R1 |  GERENCIAR OS INSUMOS    |   Deve existir um banco de dados onde são catalogados os insumos. |   #   |   Alta    |
 | R1.1 | CRUD DOS INSUMOS    |  Usuarios devem poder adicionar, ver, atualizar e remover insumos dos bancos de dados.   |   R1   |   Alta    |
-| R2 |  CARDAPIO DIGITAL   |    Um cardapio  digital que mostra todas as opições de compra com preço e descrição.    |   #   |   Alta    |
+| R2 |  CARDAPIO DIGITAL   |    Um cardapio  digital que mostra todas as opições de compra com preço e descrição.    |   #   |   Media    |
 | R3 |  COMANDA DIGITAL    |    Pode gerar e dividir comandas e alocar os pedidos para diferentes comandas.  |   #   |   Alta    |
 | R4 |  CHAMAR GARÇOM    |  Botao que imediatamente notifica o garcom mais proximo. |   #   |   Alta    |
 
