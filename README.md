@@ -91,3 +91,6 @@ Esta tabela organiza os casos de uso de forma mais visual e estruturada, facilit
 #### Modelo Conceitual
 ![image](./documentos/diagramas/Modelo_Conceitual.drawio.png)
 
+#### Diagrama de Classe
+![image](./documentos/diagramas/Diagrama_de_Classe.drawio.png)
+
