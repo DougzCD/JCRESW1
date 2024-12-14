@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <algorithm>
 using namespace std;
 
 // Classe Insumo
@@ -21,78 +22,86 @@ public:
     }
 };
 
-// Classe Cardapio
-class ItemCardapio {
+// Classe Prato (Item do Cardápio)
+class Prato {
 public:
     string nome;
     string descricao;
     double preco;
+    int codigo;
 
-    ItemCardapio(string nome, string descricao, double preco)
-        : nome(nome), descricao(descricao), preco(preco) {}
+    Prato(string nome, string descricao, double preco, int codigo)
+        : nome(nome), descricao(descricao), preco(preco), codigo(codigo) {}
 
     void exibir() const {
-        cout << "Item: " << nome << ", Descricao: " << descricao
-             << ", Preco: " << preco << endl;
+        cout << "[" << codigo << "] " << nome << " - " << descricao << " - R$ " << preco << endl;
     }
 };
 
-// Classe Mesa
-class Mesa {
-public:
-    int numero;
-    bool ocupada;
-
-    Mesa(int numero, bool ocupada = false) : numero(numero), ocupada(ocupada) {}
-
-    void alterarStatus() {
-        ocupada = !ocupada;
-    }
-
-    void exibir() {
-        cout << "Mesa " << numero << (ocupada ? " ocupada" : " livre") << endl;
-    }
-};
-
-// Classe Comanda
-class Comanda {
+// Classe Pedido
+class Pedido {
 public:
     int mesa;
-    vector<ItemCardapio> itens;
+    vector<int> listaCodigosPratos;
     double total;
 
-    Comanda(int mesa) : mesa(mesa), total(0) {}
+    Pedido(int mesa) : mesa(mesa), total(0) {}
 
-    void adicionarItem(const ItemCardapio& item) {
-        itens.push_back(item);
-        total += item.preco;
+    void adicionarPrato(const Prato& prato) {
+        listaCodigosPratos.push_back(prato.codigo);
+        total += prato.preco;
     }
 
-    void exibir() const {
-        cout << "Comanda da Mesa " << mesa << ":\n";
-        for (const auto& item : itens) {
-            item.exibir();
+    void exibir(const vector<Prato>& cardapio) const {
+        cout << "Pedido da Mesa " << mesa << ":\n";
+        for (int codigo : listaCodigosPratos) {
+            auto it = find_if(cardapio.begin(), cardapio.end(), [&codigo](const Prato& prato) {
+                return prato.codigo == codigo;
+            });
+            if (it != cardapio.end()) {
+                it->exibir();
+            }
         }
         cout << "Total: R$ " << total << endl;
     }
 };
 
-// Classe Relatorio
-class Relatorio {
+// Classe Garçom
+class Garcom {
 public:
-    static void gerarRelatorioVendas(const vector<Comanda>& comandas) {
-        double totalVendas = 0;
-        cout << "Relatorio de Vendas:\n";
-        for (const auto& comanda : comandas) {
-            totalVendas += comanda.total;
-        }
-        cout << "Total em Vendas: R$ " << totalVendas << endl;
+    string nome;
+    string senha;
+
+    Garcom(string nome, string senha) : nome(nome), senha(senha) {}
+
+    bool autenticar(const string& senhaFornecida) const {
+        return senha == senhaFornecida;
+    }
+};
+
+// Classe Banco de Dados
+class BancoDeDados {
+public:
+    vector<Insumo> insumos;
+    vector<Prato> cardapio;
+
+    void adicionarInsumo(const Insumo& insumo) {
+        insumos.push_back(insumo);
     }
 
-    static void gerarRelatorioEstoque(const vector<Insumo>& insumos) {
-        cout << "Relatorio de Estoque:\n";
-        for (const auto& insumo : insumos) {
-            insumo.exibir();
+    void editarInsumo(int index, const Insumo& novoInsumo) {
+        if (index >= 0 && index < insumos.size()) {
+            insumos[index] = novoInsumo;
+        }
+    }
+
+    void adicionarPrato(const Prato& prato) {
+        cardapio.push_back(prato);
+    }
+
+    void editarPrato(int index, const Prato& novoPrato) {
+        if (index >= 0 && index < cardapio.size()) {
+            cardapio[index] = novoPrato;
         }
     }
 };
@@ -100,28 +109,22 @@ public:
 void exibirMenu() {
     cout << "\n--- Sistema de Gerenciamento do Restaurante ---\n";
     cout << "1. Exibir Estoque\n";
-    cout << "2. Exibir Cardapio\n";
-    cout << "3. Gerenciar Mesas\n";
-    cout << "4. Gerar Relatorio de Vendas\n";
-    cout << "5. Gerar Relatorio de Estoque\n";
+    cout << "2. Editar Estoque\n";
+    cout << "3. Exibir Cardápio\n";
+    cout << "4. Editar Cardápio\n";
+    cout << "5. Gerenciar Pedidos\n";
     cout << "6. Sair\n";
-    cout << "Escolha uma opcao: ";
+    cout << "Escolha uma opção: ";
 }
 
 int main() {
-    // Dados iniciais
-    vector<Insumo> estoque = {
-        Insumo("Farinha", 50, 2.5, "2024-12-31"),
-        Insumo("Carne", 30, 15.0, "2024-01-15")
-    };
+    BancoDeDados banco;
+    banco.adicionarInsumo(Insumo("Farinha", 50, 2.5, "2024-12-31"));
+    banco.adicionarInsumo(Insumo("Carne", 30, 15.0, "2024-01-15"));
+    banco.adicionarPrato(Prato("Pizza", "Pizza de queijo", 25.0, 1));
+    banco.adicionarPrato(Prato("Hamburguer", "Hamburguer artesanal", 15.0, 2));
 
-    vector<ItemCardapio> cardapio = {
-        ItemCardapio("Pizza", "Pizza de queijo", 25.0),
-        ItemCardapio("Hamburguer", "Hamburguer artesanal", 15.0)
-    };
-
-    vector<Mesa> mesas = {Mesa(1), Mesa(2)};
-    vector<Comanda> comandas;
+    vector<Pedido> pedidos;
 
     int opcao;
     do {
@@ -131,50 +134,64 @@ int main() {
         switch (opcao) {
         case 1:
             cout << "\n--- Estoque ---\n";
-            for (const auto& insumo : estoque) {
+            for (const auto& insumo : banco.insumos) {
                 insumo.exibir();
             }
             break;
 
         case 2:
-            cout << "\n--- Cardapio ---\n";
-            for (const auto& item : cardapio) {
-                item.exibir();
-            }
+            cout << "\nEditar Estoque ainda não implementado.\n";
             break;
 
         case 3:
-            cout << "\n--- Mesas ---\n";
-            for (auto& mesa : mesas) {
-                mesa.exibir();
-            }
-            cout << "Digite o numero da mesa para alterar o status: ";
-            int numeroMesa;
-            cin >> numeroMesa;
-            for (auto& mesa : mesas) {
-                if (mesa.numero == numeroMesa) {
-                    mesa.alterarStatus();
-                    cout << "Status da mesa " << numeroMesa << " alterado!\n";
-                }
+            cout << "\n--- Cardápio ---\n";
+            for (const auto& prato : banco.cardapio) {
+                prato.exibir();
             }
             break;
 
         case 4:
-            cout << "\n--- Relatorio de Vendas ---\n";
-            Relatorio::gerarRelatorioVendas(comandas);
+            cout << "\nEditar Cardápio ainda não implementado.\n";
             break;
 
-        case 5:
-            cout << "\n--- Relatorio de Estoque ---\n";
-            Relatorio::gerarRelatorioEstoque(estoque);
+        case 5: {
+            cout << "\n--- Gerenciar Pedidos ---\n";
+            cout << "Digite o número da mesa: ";
+            int mesa;
+            cin >> mesa;
+            Pedido pedido(mesa);
+
+            cout << "Selecione os pratos pelo código (0 para finalizar):\n";
+            for (const auto& prato : banco.cardapio) {
+                prato.exibir();
+            }
+
+            int codigo;
+            do {
+                cout << "Código do prato: ";
+                cin >> codigo;
+                auto it = find_if(banco.cardapio.begin(), banco.cardapio.end(), [&codigo](const Prato& prato) {
+                    return prato.codigo == codigo;
+                });
+                if (it != banco.cardapio.end()) {
+                    pedido.adicionarPrato(*it);
+                } else if (codigo != 0) {
+                    cout << "Código inválido!\n";
+                }
+            } while (codigo != 0);
+
+            pedidos.push_back(pedido);
+            cout << "Pedido adicionado com sucesso!\n";
+            pedido.exibir(banco.cardapio);
             break;
+        }
 
         case 6:
             cout << "Encerrando o sistema...\n";
             break;
 
         default:
-            cout << "Opcao invalida! Tente novamente.\n";
+            cout << "Opção inválida! Tente novamente.\n";
         }
     } while (opcao != 6);
 
