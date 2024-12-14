@@ -18,7 +18,7 @@ public:
 
     void exibir() const {
         cout << "Nome: " << nome << ", Quantidade: " << quantidade
-             << ", Preco: " << preco << ", Validade: " << validade << endl;
+             << ", Preco: R$" << preco << ", Validade: " << validade << endl;
     }
 };
 
@@ -129,8 +129,8 @@ public:
 
 void exibirMenu() {
     cout << "\n--- Sistema de Gerenciamento do Restaurante ---\n";
-    cout << "1. Exibir Estoque\n";
-    cout << "2. Editar Estoque\n";
+    cout << "1. Exibir Estoque de Insumos\n";
+    cout << "2. Editar Estoque de Insumos\n";
     cout << "3. Exibir Pratos\n";
     cout << "4. Editar Pratos\n";
     cout << "5. Gerenciar Pedidos\n";
